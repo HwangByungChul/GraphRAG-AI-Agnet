@@ -26,6 +26,7 @@ GraphRAG AI Agent 공통 프레임워크 개발
 - LangGraph 기반 Agent Workflow 공통 구조
 - 도메인별 Entity/Relation Schema 확장 구조
 - 문서 로딩, 청킹, 임베딩, 인덱싱 파이프라인
+- 벡터화 대상 자료를 관리하는 관리자 사이트
 - Hybrid Retrieval: Vector Search + Graph Traversal
 - 출처 기반 답변 생성 지원
 - 인증, DB, 알림, 스케줄러 등 기존 공통 모듈 안정화
@@ -153,6 +154,17 @@ vm-common-core/
 - 이메일/텔레그램 알림
 - APScheduler 기반 배치 작업
 
+### 4.5 Admin Portal Core
+
+- 벡터화 대상 자료 등록, 수정, 삭제
+- 파일, URL, DB record, API source 등 자료 유형 관리
+- 자료별 domain, scope, tenant_id, user_id, metadata 관리
+- 문서 파싱, chunking, embedding, entity/relation 추출 작업 실행
+- 인덱싱 작업 상태 모니터링
+- 실패 작업 재시도 및 재인덱싱
+- 검색 테스트 및 chunk/entity/relation 미리보기
+- 관리자 권한 기반 접근 제어
+
 ## 5. 단계별 추진 계획 및 산출물
 
 ### 5.1 100. 프로젝트계획
@@ -221,6 +233,7 @@ vm-common-core/
 | 산출물 | 설명 | 주요 내용 |
 |---|---|---|
 | 소스코드 | `vm-common-core` 구현 결과 | GraphRAG, RAG, Agent 공통 모듈 |
+| 관리자 사이트 | 벡터화 대상 자료 관리 화면 및 API | 자료 등록, 인덱싱 실행, 상태 모니터링, 재처리 |
 | 구현결과서 | 구현 범위 및 결과 요약 | 구현 모듈, 미구현 사항, 제약 |
 | SW라이선스목록 | 사용 라이브러리 목록 | LangChain, LangGraph, OpenAI, SQLAlchemy 등 |
 | 단위 테스트 시나리오 | 단위 테스트 설계 및 결과 | 모듈별 테스트 케이스 |
