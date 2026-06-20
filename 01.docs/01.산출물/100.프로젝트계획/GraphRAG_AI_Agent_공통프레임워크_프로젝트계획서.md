@@ -297,6 +297,8 @@ vm-common-core/
 
 현재 1인 개발 또는 소규모 개발 기준에서는 PM, Architect, AI Engineer, Backend Engineer 역할을 동일 인원이 겸임할 수 있다.
 
+단계별 상세 투입 인력과 추가 전문 역할은 `GraphRAG_AI_Agent_공통프레임워크_단계별_인력정의서.md`를 기준으로 관리한다. 본 프로젝트는 일반 서비스 개발보다 GraphRAG, LLM, 데이터 파이프라인, 지식 모델링, 운영 보안의 비중이 높으므로 GraphRAG Engineer, AI/ML Engineer, Knowledge Engineer, Data Engineer, DBA/Data Architect, Prompt Engineer, MLOps/LLMOps Engineer, Security Engineer, Technical Writer의 역할을 별도로 정의한다.
+
 ## 8. 품질 관리 계획
 
 ### 8.1 품질 기준
@@ -395,4 +397,3 @@ vm-common-core/
 4. 기존 프로젝트 공통기능 분석서 작성
 5. GraphRAG 상세설계서 작성
 6. `vm-common-core` 구현 착수
-
