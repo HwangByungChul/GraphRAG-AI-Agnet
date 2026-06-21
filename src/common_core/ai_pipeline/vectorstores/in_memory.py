@@ -115,6 +115,12 @@ class InMemoryVectorStore:
     @staticmethod
     def _matches_filters(chunk: ChunkInput, filters: dict) -> bool:
         for key, value in filters.items():
+            if key == "source_id" and chunk.source_id == value:
+                continue
+            if key == "document_id" and chunk.document_id == value:
+                continue
+            if key == "domain" and chunk.domain == value:
+                continue
             if chunk.metadata.get(key) != value:
                 return False
         return True
@@ -135,4 +141,3 @@ class InMemoryVectorStore:
         if left_norm == 0 or right_norm == 0:
             return 0.0
         return numerator / (left_norm * right_norm)
-

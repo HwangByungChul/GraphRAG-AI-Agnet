@@ -36,6 +36,10 @@ def create_admin_router(service: AdminService | None = None):
     def delete_source(source_id: str):
         return AdminApiResponse(success=True, data=admin_service.delete_source(source_id))
 
+    @router.get("/sources/{source_id}/preview")
+    def get_source_preview(source_id: str, limit: int = 20):
+        return AdminApiResponse(success=True, data=admin_service.get_source_preview(source_id, limit))
+
     @router.post("/index-jobs")
     def create_index_job(request: IndexJobRequest):
         return AdminApiResponse(success=True, data=admin_service.create_index_job(request))
@@ -52,9 +56,12 @@ def create_admin_router(service: AdminService | None = None):
     def get_index_job(job_id: str):
         return AdminApiResponse(success=True, data=admin_service.get_index_job(job_id))
 
+    @router.post("/index-jobs/{job_id}/retry")
+    def retry_index_job(job_id: str):
+        return AdminApiResponse(success=True, data=admin_service.retry_index_job(job_id))
+
     @router.post("/retrieval-tests")
     def search_test(request: GraphRAGSearchTestRequest):
         return AdminApiResponse(success=True, data=admin_service.search_test(request))
 
     return router
-
