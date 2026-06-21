@@ -2,7 +2,7 @@
 
 GraphRAG AI Agent 공통 프레임워크는 `VectorMoon`, `Sol-Bat`, `accountBook`, `lotto` 등 바이브코딩으로 진행한 서비스에서 반복적으로 필요한 RAG, GraphRAG, Agent Workflow, 관리자 기능을 공통화하기 위한 프로젝트입니다.
 
-본 저장소는 공통 프레임워크 소스, Sol-Bat 파일럿 PoC, 관리자 사이트 MVP, 테스트 자동화 구조, KTSSP 기준 산출물을 함께 관리합니다.
+본 저장소는 공통 프레임워크 소스, Sol-Bat 파일럿 PoC, 관리자 사이트 MVP, 테스트 자동화 구조, 단계별 산출물을 함께 관리합니다.
 
 > 저장소명은 현재 GitHub 생성명에 따라 `GraphRAG-AI-Agnet`로 유지합니다.
 
@@ -17,7 +17,7 @@ GraphRAG AI Agent 공통 프레임워크는 `VectorMoon`, `Sol-Bat`, `accountBoo
 | 현재 버전 | `0.1.0` |
 | 현재 상태 | MVP 및 Sol-Bat 파일럿 PoC 완료, 프로젝트 종료 산출물 작성 완료 |
 | 1차 파일럿 | `Sol-Bat` |
-| 산출물 기준 | KTSSP 산출물 구조 |
+| 산출물 기준 | 단계별 프로젝트 산출물 구조 |
 
 ## 2. 추진 배경
 
@@ -40,7 +40,7 @@ GraphRAG AI Agent 공통 프레임워크는 `VectorMoon`, `Sol-Bat`, `accountBoo
 - Agent Workflow Factory와 GraphRAGRetrieveNode 연계 구조 구현
 - 관리자 사이트 MVP로 Source/IndexJob/Preview/RetrievalTest 관리 기능 제공
 - Sol-Bat 도메인 스키마와 샘플 데이터 기반 파일럿 검증
-- KTSSP 산출물 기준으로 프로젝트 계획부터 종료까지 문서화
+- 단계별 산출물 기준으로 프로젝트 계획부터 종료까지 문서화
 - 테스트 자동화 기본 구조와 회귀 테스트 기준 마련
 
 ## 4. 전체 아키텍처
@@ -371,4 +371,4 @@ v0.1.0-poc
 
 - 본 저장소는 공통 프레임워크 기반을 만들기 위한 MVP/PoC 성격의 프로젝트입니다.
 - 실제 운영 적용 전에는 보안, 성능, 실제 저장소, 배포 자동화 검증이 추가로 필요합니다.
-- 산출물 파일명과 폴더명은 KTSSP 산출물 구조와 사용자의 단계별 요청 흐름을 기준으로 유지합니다.
+- 산출물 파일명과 폴더명은 프로젝트 단계별 산출물 구조와 사용자의 단계별 요청 흐름을 기준으로 유지합니다.
