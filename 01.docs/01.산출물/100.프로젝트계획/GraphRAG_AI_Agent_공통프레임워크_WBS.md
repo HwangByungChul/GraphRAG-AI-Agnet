@@ -1,4 +1,4 @@
-# GraphRAG AI Agent 공통 프레임워크 WBS
+﻿# GraphRAG AI Agent 공통 프레임워크 WBS
 
 ## 1. 문서 개요
 
@@ -223,8 +223,8 @@
 | 3.0 | 요구정의 | 완료 | 액터목록 및 유스케이스목록, 요구사항정의서, 요구사항추적표 작성 완료 | 요구정의 단계 완료 |
 | 4.0 | 분석 | 완료 | 기존 프로젝트 공통기능분석서, RAG/Agent 구현현황분석서, 도메인 개념 및 용어정의서, 논리 데이터 모델 분석서, 인터페이스 및 외부 연계 분석서, 분석산출물 검토및확정 문서 작성 | 분석 단계 완료 |
 | 5.0 | 설계 | 완료 | 공통 모듈 상세설계서, GraphRAG Core 상세설계서, 물리 데이터 모델 설계서, 관리자/API 명세서, OpenAPI YAML, 관리자 사이트 화면정의서, Frontend 컴포넌트 설계서, 통합 테스트 시나리오, 설계산출물 검토및확정 문서 작성 | 설계 단계 조건부 확정 |
-| 6.0 | 구현 | 미착수 | - | 다음 단계 |
-| 7.0 | 파일럿 적용 | 미착수 | - | 구현 완료 후 Sol-Bat 대상 적용 |
+| 6.0 | 구현 | 완료 | 6.1~6.8 구현 산출물 및 초기 소스 구현 완료 | 구현 단계 완료 |
+| 7.0 | 파일럿 적용 | 미착수 | - | 다음 단계: Sol-Bat 대상 적용 |
 | 8.0 | 테스트 | 미착수 | - | 파일럿 적용 후 착수 |
 | 9.0 | 이행 | 미착수 | - | 테스트 완료 후 착수 |
 | 10.0 | 종료 | 미착수 | - | 이행 완료 후 착수 |
@@ -263,25 +263,34 @@
 | 5.6 | API 및 인터페이스 설계 | 완료 | 관리자_GraphRAG_API명세서, OpenAPI YAML |
 | 5.7 | 테스트 설계 기준 수립 | 완료 | 관리자_GraphRAG_API_화면통합테스트시나리오 |
 | 5.8 | 설계 산출물 검토 | 완료 | 설계산출물_검토및확정 |
+| 6.1 | 프로젝트 패키지 구조 정리 | 완료 | 프로젝트패키지구조_초기소스구성, `pyproject.toml`, `src/common_core` |
+| 6.2 | RAG Core 구현 | 완료 | RAG_Core구현결과, DocumentPipeline, ParserRegistry, Chunker, MetadataEnricher, TextNormalizer |
+| 6.3 | VectorStoreFactory 개선 | 완료 | VectorStoreFactory개선결과, InMemoryVectorStore, FAISS/PGVector Adapter 골격 |
+| 6.4 | Graph Store 구현 | 완료 | GraphStore구현결과, InMemoryGraphStore, PostgreSQLGraphStoreAdapter 골격 |
+| 6.5 | Entity/Relation Extractor 구현 | 완료 | Entity_Relation_Extractor구현결과, EntityResolver, Extractor, EvidenceLinker |
+| 6.6 | Hybrid Retriever 구현 | 완료 | HybridRetriever구현결과, Vector+Graph 결합 검색, scoring, ContextAssembler |
+| 6.7 | Agent Workflow Factory 구현 | 완료 | AgentWorkflowFactory구현결과, WorkflowDefinition, GraphRAGRetrieveNode, LLMAnswerNode |
+| 6.8 | 관리자 사이트 MVP 구현 및 구현 결과 정리 | 완료 | 관리자사이트MVP구현결과, AdminService, FastAPI Router 골격, 정적 관리자 화면 |
+| 6.9 | 구현 산출물 검토 및 확정 | 완료 | 구현산출물_검토및확정 |
 
 ### 9.3 진행 예정 작업
 
 | 우선순위 | WBS ID | 작업명 | 담당 역할 | 예정 산출물 |
 |---:|---|---|---|---|
-| 1 | 6.1 | 프로젝트 패키지 구조 정리 | 개발자, Architect | 패키지 구조 |
-| 2 | 6.2 | RAG Core 구현 | AI/ML Engineer, 개발자 | RAG Core 소스 |
-| 3 | 6.3 | VectorStoreFactory 개선 | 개발자, Data Engineer | Vector Store 모듈 |
-| 4 | 6.4 | Graph Store 구현 | GraphRAG Engineer, DBA | Graph Store 소스 |
-| 5 | 6.5 | Entity/Relation Extractor 구현 | GraphRAG Engineer, Knowledge Engineer | Extractor 소스 |
+| 1 | 7.1 | Sol-Bat 적용 범위 선정 | PM, Product Owner, Domain Expert | 파일럿 범위 정의 |
+| 2 | 7.2 | Sol-Bat 도메인 스키마 정의 | Knowledge Engineer, GraphRAG Engineer | 도메인 Entity/Relation 정의 |
+| 3 | 7.3 | GraphRAG 검색 노드 적용 | 개발자, GraphRAG Engineer | 파일럿 소스 변경 |
+| 4 | 7.4 | 파일럿 데이터 인덱싱 | Data Engineer | 파일럿 인덱싱 결과 |
+| 5 | 7.5 | 파일럿 동작 확인 및 결과 정리 | QA, Domain Expert | 파일럿 적용 결과서 |
 
 ### 9.4 다음 작업
 
-다음 작업은 WBS 기준 `6.1 프로젝트 패키지 구조 정리`이다.
+다음 작업은 WBS 기준 `7.1 Sol-Bat 적용 범위 선정`이다.
 
 권장 요청 형식:
 
 ```text
-[Backend Engineer/아키텍터] 250.구현 단계의 프로젝트 패키지 구조를 정리하고 초기 skeleton을 구성해 주세요. 공통 모듈, GraphRAG Core, 관리자 API, 데이터 모델 migration, 테스트 구조를 포함해 주세요.
+[PM/Product Owner] 270.파일럿 적용 단계의 Sol-Bat 적용 범위를 선정해 주세요. 적용 대상 기능, 파일럿 시나리오, 대상 데이터, 성공 기준을 포함해 주세요.
 ```
 
 ### 9.6 최근 업데이트 이력
@@ -291,6 +300,7 @@
 | 2026-06-21 | 230.분석 단계 산출물 완료 반영 | 분석 산출물 6건 작성 |
 | 2026-06-21 | 240.설계 단계 산출물 완료 반영 | 설계 산출물 9건 작성, 설계 단계 조건부 확정 |
 | 2026-06-21 | 다음 작업을 250.구현 단계 `6.1 프로젝트 패키지 구조 정리`로 변경 | 구현 단계 진입 준비 |
+| 2026-06-21 | 250.구현 단계 `6.1~6.8` 완료 및 구현 산출물 검토/확정 반영 | 다음 작업을 `7.1 Sol-Bat 적용 범위 선정`으로 변경 |
 
 ### 9.5 WBS 시각화 산출물
 

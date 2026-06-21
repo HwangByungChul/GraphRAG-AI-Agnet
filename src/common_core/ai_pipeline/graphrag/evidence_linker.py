@@ -33,7 +33,7 @@ class EvidenceLinker:
         """Link a chunk quote to extracted entities and relations."""
 
         options = options or EvidenceLinkOptions()
-        quote = chunk.content[: options.quote_window_chars].strip()
+        quote = self._quote_for(chunk, entities, options.quote_window_chars)
         if not quote:
             return EvidenceBundle(warnings=[{"code": "EMPTY_CHUNK", "chunk_id": chunk.chunk_id}])
 
@@ -48,10 +48,12 @@ class EvidenceLinker:
 
         links: list[EvidenceLinkRecord] = []
         for entity in entities:
+            target_ref = entity.entity_id or entity.normalized_name
             links.append(
                 EvidenceLinkRecord(
                     target_type="ENTITY",
-                    target_ref=entity.entity_id or entity.normalized_name,
+                    target_id=entity.entity_id,
+                    target_ref=target_ref,
                     support_type=options.default_support_type,
                     confidence_score=entity.confidence_score,
                 )
@@ -60,11 +62,34 @@ class EvidenceLinker:
             links.append(
                 EvidenceLinkRecord(
                     target_type="RELATION",
+                    target_id=relation.candidate_id,
                     target_ref=relation.candidate_id,
                     support_type=options.default_support_type,
                     confidence_score=relation.confidence_score,
                 )
             )
 
-        return EvidenceBundle(evidence=[evidence], links=links)
+        warnings = []
+        if options.require_relation_evidence and relations and not links:
+            warnings.append({"code": "RELATION_EVIDENCE_MISSING", "chunk_id": chunk.chunk_id})
 
+        return EvidenceBundle(evidence=[evidence], links=links, warnings=warnings)
+
+    @staticmethod
+    def _quote_for(
+        chunk: ChunkInput,
+        entities: list[ResolvedEntity],
+        quote_window_chars: int,
+    ) -> str:
+        offsets = [
+            offset
+            for entity in entities
+            for mention in entity.mention_texts
+            if (offset := chunk.content.find(mention)) >= 0
+        ]
+        if not offsets:
+            return chunk.content[:quote_window_chars].strip()
+        center = min(offsets)
+        start = max(0, center - quote_window_chars // 3)
+        end = min(len(chunk.content), start + quote_window_chars)
+        return chunk.content[start:end].strip()

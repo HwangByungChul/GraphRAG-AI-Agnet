@@ -37,14 +37,46 @@ class SchemaRegistry:
                 domain="sol_bat",
                 version="1.0.0",
                 entity_types=[
-                    EntityTypeDef(type="CROP", description="Crop", aliases=["tomato", "pepper"]),
-                    EntityTypeDef(type="FIELD", description="Field or farm"),
-                    EntityTypeDef(type="DISEASE", description="Disease"),
-                    EntityTypeDef(type="PEST", description="Pest"),
-                    EntityTypeDef(type="WEATHER_CONDITION", description="Weather condition"),
-                    EntityTypeDef(type="SOIL_CONDITION", description="Soil condition"),
-                    EntityTypeDef(type="ACTION", description="Recommended action"),
-                    EntityTypeDef(type="RULE", description="Rule or recommendation"),
+                    EntityTypeDef(
+                        type="CROP",
+                        description="Crop",
+                        aliases=["tomato", "pepper", "토마토", "고추", "딸기"],
+                    ),
+                    EntityTypeDef(
+                        type="FIELD",
+                        description="Field or farm",
+                        aliases=["field", "farm", "농장", "포장", "하우스", "온실"],
+                    ),
+                    EntityTypeDef(
+                        type="DISEASE",
+                        description="Disease",
+                        aliases=["disease", "blight", "역병", "잎곰팡이병", "흰가루병", "병해"],
+                    ),
+                    EntityTypeDef(
+                        type="PEST",
+                        description="Pest",
+                        aliases=["pest", "aphid", "진딧물", "총채벌레", "해충"],
+                    ),
+                    EntityTypeDef(
+                        type="WEATHER_CONDITION",
+                        description="Weather condition",
+                        aliases=["고온", "저온", "다습", "강우", "습도", "weather"],
+                    ),
+                    EntityTypeDef(
+                        type="SOIL_CONDITION",
+                        description="Soil condition",
+                        aliases=["토양", "pH", "질소", "인산", "수분", "soil"],
+                    ),
+                    EntityTypeDef(
+                        type="ACTION",
+                        description="Recommended action",
+                        aliases=["방제", "관수", "환기", "시비", "살포", "제거", "action"],
+                    ),
+                    EntityTypeDef(
+                        type="RULE",
+                        description="Rule or recommendation",
+                        aliases=["기준", "권고", "규칙", "recommendation", "rule"],
+                    ),
                 ],
                 relation_types=[
                     RelationTypeDef(
@@ -81,4 +113,3 @@ class SchemaRegistry:
             )
         )
         return registry
-

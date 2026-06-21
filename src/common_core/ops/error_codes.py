@@ -1,9 +1,9 @@
 """Common GraphRAG error codes."""
 
-from enum import StrEnum
+from enum import Enum
 
 
-class ErrorCode(StrEnum):
+class ErrorCode(str, Enum):
     """Framework error code registry."""
 
     GRAG_SRC_001 = "GRAG-SRC-001"
@@ -23,4 +23,4 @@ class ErrorCode(StrEnum):
     GRAG_RET_001 = "GRAG-RET-001"
     GRAG_RET_404 = "GRAG-RET-404"
     GRAG_RET_500 = "GRAG-RET-500"
-
+    AGENT_WORKFLOW_FAILED = "AGENT-WORKFLOW-FAILED"

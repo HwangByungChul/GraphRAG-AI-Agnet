@@ -7,14 +7,14 @@ other.
 
 from __future__ import annotations
 
-from enum import StrEnum
+from enum import Enum
 from typing import Any
 from uuid import uuid4
 
 from pydantic import BaseModel, Field, field_validator
 
 
-class SourceScope(StrEnum):
+class SourceScope(str, Enum):
     """Source visibility scope."""
 
     PUBLIC = "PUBLIC"
@@ -22,7 +22,7 @@ class SourceScope(StrEnum):
     TENANT = "TENANT"
 
 
-class RetrievalStrategy(StrEnum):
+class RetrievalStrategy(str, Enum):
     """Supported retrieval strategies."""
 
     VECTOR_ONLY = "VECTOR_ONLY"
@@ -31,7 +31,7 @@ class RetrievalStrategy(StrEnum):
     HYBRID_RERANK = "HYBRID_RERANK"
 
 
-class RetrievalStatus(StrEnum):
+class RetrievalStatus(str, Enum):
     """Retrieval execution status."""
 
     HIT = "HIT"
@@ -273,4 +273,3 @@ class ContextAssembleResult(BaseModel):
     token_estimate: int
     truncated: bool = False
     warnings: list[dict[str, Any]] = Field(default_factory=list)
-

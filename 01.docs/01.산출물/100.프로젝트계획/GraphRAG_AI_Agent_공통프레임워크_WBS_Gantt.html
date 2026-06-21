@@ -388,10 +388,10 @@
 
   <main>
     <section class="summary" aria-label="진행 요약">
-      <div class="metric"><b>5 / 10</b><span>완료 단계</span></div>
-      <div class="metric"><b>50%</b><span>단계 기준 진행률</span></div>
-      <div class="metric"><b>6.0 구현</b><span>다음 단계</span></div>
-      <div class="metric"><b>2026-08-03</b><span>다음 단계 예정 시작일</span></div>
+      <div class="metric"><b>6 / 10</b><span>완료 단계</span></div>
+      <div class="metric"><b>60%</b><span>단계 기준 진행률</span></div>
+      <div class="metric"><b>7.0 파일럿 적용</b><span>다음 단계</span></div>
+      <div class="metric"><b>2026-08-24</b><span>다음 단계 예정 시작일</span></div>
     </section>
 
     <div class="toolbar">
@@ -431,8 +431,8 @@
           <tr><td>M3 요구사항 기준선 확정</td><td>2026-07-10</td><td>요구사항정의서 및 추적표 작성 완료</td><td><span class="badge complete">완료</span></td></tr>
           <tr><td>M4 분석 완료</td><td>2026-07-17</td><td>기존 프로젝트 공통기능 분석 완료</td><td><span class="badge complete">다음 단계</span></td></tr>
           <tr><td>M5 설계 기준선 확정</td><td>2026-07-31</td><td>상세설계, ERD, API 명세 완료</td><td><span class="badge complete">미착수</span></td></tr>
-          <tr><td>M6 공통 프레임워크 1차 구현 완료</td><td>2026-08-21</td><td>RAG, GraphRAG, Agent Core 구현 완료</td><td><span class="badge next">미착수</span></td></tr>
-          <tr><td>M7 Sol-Bat 파일럿 완료</td><td>2026-08-28</td><td>파일럿 적용 결과 정리 완료</td><td><span class="badge pending">미착수</span></td></tr>
+          <tr><td>M6 공통 프레임워크 1차 구현 완료</td><td>2026-08-21</td><td>RAG, GraphRAG, Agent Core 구현 완료</td><td><span class="badge complete">완료</span></td></tr>
+          <tr><td>M7 Sol-Bat 파일럿 완료</td><td>2026-08-28</td><td>파일럿 적용 결과 정리 완료</td><td><span class="badge next">다음 단계</span></td></tr>
           <tr><td>M8 테스트 완료</td><td>2026-09-04</td><td>테스트결과서 및 결함 조치 완료</td><td><span class="badge pending">미착수</span></td></tr>
           <tr><td>M9 이행 준비 완료</td><td>2026-09-11</td><td>사용자/운영자 매뉴얼 작성 완료</td><td><span class="badge pending">미착수</span></td></tr>
           <tr><td>M10 프로젝트 종료</td><td>2026-09-18</td><td>완료보고서 및 최종 산출물 정리 완료</td><td><span class="badge pending">미착수</span></td></tr>
@@ -510,24 +510,24 @@
         ]
       },
       {
-        id: "6.0", name: "구현", startWeek: 7, span: 3, status: "next",
+        id: "6.0", name: "구현", startWeek: 7, span: 3, status: "complete",
         dates: "2026-08-03 ~ 2026-08-21",
         children: [
-          ["6.1", "프로젝트 패키지 구조 정리", 7, 1, "next", ["패키지 구조", "common_core 구조 정리"]],
-          ["6.2", "RAG Core 구현", 7, 1, "pending", ["RAG Core 소스", "DocumentPipeline, Retriever"]],
-          ["6.3", "VectorStoreFactory 개선", 8, 1, "pending", ["Vector Store 모듈", "pgvector/FAISS/Chroma Adapter"]],
-          ["6.4", "Graph Store 구현", 8, 1, "pending", ["Graph Store 소스", "Entity/Relation 저장"]],
-          ["6.5", "Entity/Relation Extractor 구현", 9, 1, "pending", ["Extractor 소스", "Rule + LLM Hybrid 추출"]],
-          ["6.6", "Hybrid Retriever 구현", 9, 1, "pending", ["Hybrid Retriever 소스", "Vector + Graph 통합 검색"]],
-          ["6.7", "Agent Workflow Factory 구현", 9, 1, "pending", ["Agent Core 소스", "LangGraph Workflow Factory"]],
+          ["6.1", "프로젝트 패키지 구조 정리", 7, 1, "complete", ["패키지 구조", "common_core 구조 정리"]],
+          ["6.2", "RAG Core 구현", 7, 1, "complete", ["RAG Core 소스", "DocumentPipeline, Retriever"]],
+          ["6.3", "VectorStoreFactory 개선", 8, 1, "complete", ["Vector Store 모듈", "pgvector/FAISS/Chroma Adapter"]],
+          ["6.4", "Graph Store 구현", 8, 1, "complete", ["Graph Store 소스", "Entity/Relation 저장"]],
+          ["6.5", "Entity/Relation Extractor 구현", 9, 1, "complete", ["Extractor 소스", "Rule + LLM Hybrid 추출"]],
+          ["6.6", "Hybrid Retriever 구현", 9, 1, "complete", ["Hybrid Retriever 소스", "Vector + Graph 통합 검색"]],
+          ["6.7", "Agent Workflow Factory 구현", 9, 1, "complete", ["Agent Core 소스", "LangGraph Workflow Factory"]],
           ["6.8", "관리자 사이트 MVP 구현 및 결과 정리", 9, 1, "pending", ["자료 관리 화면/API", "구현결과서", "단위 테스트 초안"]]
         ]
       },
       {
-        id: "7.0", name: "파일럿 적용", startWeek: 10, span: 1, status: "pending",
+        id: "7.0", name: "파일럿 적용", startWeek: 10, span: 1, status: "next",
         dates: "2026-08-24 ~ 2026-08-28",
         children: [
-          ["7.1", "Sol-Bat 적용 범위 선정", 10, 1, "pending", ["파일럿 범위 정의", "적용 대상 시나리오"]],
+          ["7.1", "Sol-Bat 적용 범위 선정", 10, 1, "next", ["파일럿 범위 정의", "적용 대상 시나리오"]],
           ["7.2", "Sol-Bat 도메인 스키마 정의", 10, 1, "pending", ["도메인 Entity/Relation 정의", "농업 도메인 스키마"]],
           ["7.3", "GraphRAG 검색 노드 적용", 10, 1, "pending", ["파일럿 소스 변경", "Agent 검색 노드 연결"]],
           ["7.4", "파일럿 데이터 인덱싱", 10, 1, "pending", ["파일럿 인덱싱 결과", "샘플 자료 인덱싱"]],

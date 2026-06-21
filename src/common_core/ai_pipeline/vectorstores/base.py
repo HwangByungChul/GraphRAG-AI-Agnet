@@ -10,7 +10,7 @@ from common_core.ai_pipeline.graphrag.schemas import AuthContext, ChunkInput
 class VectorWriteOptions(BaseModel):
     """Options for vector writes."""
 
-    collection_name: str
+    collection_name: str = "default"
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 
@@ -30,6 +30,7 @@ class VectorSearchRequest(BaseModel):
     query: str
     filters: dict[str, Any] = Field(default_factory=dict)
     top_k: int = 5
+    collection_name: str = "default"
     auth: AuthContext | None = None
 
 
@@ -90,4 +91,3 @@ class VectorStoreAdapter(Protocol):
 
     def health_check(self) -> ProviderHealth:
         """Return provider health."""
-

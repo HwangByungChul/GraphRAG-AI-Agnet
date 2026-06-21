@@ -56,6 +56,14 @@ class GraphRAGRetrieveNode:
         new_state["retrieval"] = response.model_dump(mode="json")
         new_state["context"] = response.context
         new_state["evidence"] = [item.model_dump(mode="json") for item in response.evidence]
+        new_state["citations"] = [
+            {
+                "evidence_id": evidence.evidence_id,
+                "source_id": evidence.source_id,
+                "chunk_id": evidence.chunk_id,
+            }
+            for evidence in response.evidence
+        ]
         new_state["error"] = None
         if self.next_node:
             new_state["next_node"] = self.next_node
@@ -75,4 +83,3 @@ class GraphRAGRetrieveNode:
         new_state["error"] = {"code": code.value, "message": message}
         new_state["context"] = ""
         return new_state
-

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GraphRAG Admin MVP</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; color: #1f2937; background: #f8fafc; }
+    header { padding: 16px 24px; background: #111827; color: white; }
+    main { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 20px; }
+    section { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; }
+    h1 { font-size: 20px; margin: 0; }
+    h2 { font-size: 16px; margin: 0 0 12px; }
+    label { display: block; font-size: 12px; margin: 10px 0 4px; color: #4b5563; }
+    input, textarea, select { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; }
+    textarea { min-height: 96px; resize: vertical; }
+    button { margin-top: 12px; padding: 8px 10px; border: 0; border-radius: 6px; background: #2563eb; color: white; cursor: pointer; }
+    pre { white-space: pre-wrap; background: #f3f4f6; padding: 10px; border-radius: 6px; min-height: 120px; overflow: auto; }
+    @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header><h1>GraphRAG Admin MVP</h1></header>
+  <main>
+    <section>
+      <h2>Source 등록</h2>
+      <label>Domain</label>
+      <input id="source-domain" value="sol_bat" />
+      <label>Name</label>
+      <input id="source-name" value="sample-guide" />
+      <label>Content</label>
+      <textarea id="source-content">Tomato disease prevention guide. Humid weather can cause disease and action can prevent disease.</textarea>
+      <button id="btn-create-source">등록</button>
+      <button id="btn-list-source">목록 조회</button>
+      <pre id="source-output"></pre>
+    </section>
+    <section>
+      <h2>IndexJob 실행/상태</h2>
+      <label>Source ID</label>
+      <input id="job-source-id" />
+      <label>Job ID</label>
+      <input id="job-id" />
+      <button id="btn-create-job">Job 생성</button>
+      <button id="btn-run-job">실행</button>
+      <button id="btn-list-job">상태 목록</button>
+      <pre id="job-output"></pre>
+    </section>
+    <section>
+      <h2>GraphRAG 검색 테스트</h2>
+      <label>Query</label>
+      <input id="search-query" value="tomato disease" />
+      <label>Strategy</label>
+      <select id="search-strategy">
+        <option>HYBRID</option>
+        <option>VECTOR_ONLY</option>
+        <option>GRAPH_ONLY</option>
+      </select>
+      <button id="btn-search">검색</button>
+      <pre id="search-output"></pre>
+    </section>
+  </main>
+  <script>
+    const api = "/api/admin";
+    const write = (id, value) => document.getElementById(id).textContent = JSON.stringify(value, null, 2);
+    async function request(path, options = {}) {
+      const response = await fetch(api + path, {
+        headers: { "Content-Type": "application/json" },
+        ...options
+      });
+      return response.json();
+    }
+    document.getElementById("btn-create-source").onclick = async () => {
+      const data = await request("/sources", {
+        method: "POST",
+        body: JSON.stringify({
+          domain: document.getElementById("source-domain").value,
+          source_type: "TEXT",
+          name: document.getElementById("source-name").value,
+          content: document.getElementById("source-content").value
+        })
+      });
+      if (data.data?.source_id) document.getElementById("job-source-id").value = data.data.source_id;
+      write("source-output", data);
+    };
+    document.getElementById("btn-list-source").onclick = async () => write("source-output", await request("/sources"));
+    document.getElementById("btn-create-job").onclick = async () => {
+      const data = await request("/index-jobs", {
+        method: "POST",
+        body: JSON.stringify({ source_id: document.getElementById("job-source-id").value })
+      });
+      if (data.data?.job_id) document.getElementById("job-id").value = data.data.job_id;
+      write("job-output", data);
+    };
+    document.getElementById("btn-run-job").onclick = async () => {
+      const jobId = document.getElementById("job-id").value;
+      write("job-output", await request(`/index-jobs/${jobId}/run`, { method: "POST" }));
+    };
+    document.getElementById("btn-list-job").onclick = async () => write("job-output", await request("/index-jobs"));
+    document.getElementById("btn-search").onclick = async () => {
+      write("search-output", await request("/retrieval-tests", {
+        method: "POST",
+        body: JSON.stringify({
+          domain: document.getElementById("source-domain").value,
+          query: document.getElementById("search-query").value,
+          strategy: document.getElementById("search-strategy").value
+        })
+      }));
+    };
+  </script>
+</body>
+</html>
+
