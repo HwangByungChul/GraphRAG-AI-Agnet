@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import math
-import re
 from collections import Counter
 
 from common_core.ai_pipeline.graphrag.schemas import AuthContext, ChunkInput
@@ -127,7 +126,17 @@ class InMemoryVectorStore:
 
     @staticmethod
     def _text_vector(text: str) -> Counter[str]:
-        tokens = re.findall(r"[\w가-힣]+", text.lower())
+        tokens = []
+        current = []
+        for character in text.lower():
+            if character.isalnum() or character == "_":
+                current.append(character)
+                continue
+            if current:
+                tokens.append("".join(current))
+                current = []
+        if current:
+            tokens.append("".join(current))
         return Counter(tokens)
 
     @staticmethod

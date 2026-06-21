@@ -34,8 +34,8 @@ def test_sol_bat_entity_extractor_detects_domain_aliases():
 
     pairs = {(candidate.entity_type, candidate.mention_text.lower()) for candidate in candidates}
     assert ("CROP", "tomato") in pairs
-    assert ("DISEASE", "disease") in pairs
-    assert ("WEATHER_CONDITION", "weather") in pairs
+    assert ("PEST_DISEASE", "disease") in pairs
+    assert ("ENVIRONMENT_CONDITION", "weather") in pairs
 
 
 def test_entity_resolver_merges_duplicate_candidates():
@@ -71,9 +71,9 @@ def test_relation_extractor_uses_schema_and_keywords():
         (relation.relation_type, relation.source_entity_type, relation.target_entity_type)
         for relation in relations
     }
-    assert ("CAUSES", "WEATHER_CONDITION", "DISEASE") in relation_pairs
-    assert ("AFFECTS", "DISEASE", "CROP") in relation_pairs
-    assert ("PREVENTS", "ACTION", "DISEASE") in relation_pairs
+    assert ("HAS_RISK_OF", "CROP", "PEST_DISEASE") in relation_pairs
+    assert ("AFFECTS", "ENVIRONMENT_CONDITION", "CROP") in relation_pairs
+    assert ("PREVENTS", "MANAGEMENT_ACTION", "PEST_DISEASE") in relation_pairs
     assert all(relation.confidence_score >= 0.60 for relation in relations)
 
 
@@ -96,4 +96,3 @@ def test_extraction_to_graph_store_evidence_flow():
     assert any(link.target_type == "ENTITY" for link in bundle.links)
     assert any(link.target_type == "RELATION" for link in bundle.links)
     assert store.get_evidence(EvidenceQuery(domain="sol_bat"), AuthContext(roles=["ADMIN"]))
-
