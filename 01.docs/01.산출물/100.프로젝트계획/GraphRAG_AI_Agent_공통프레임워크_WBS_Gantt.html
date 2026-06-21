@@ -388,10 +388,10 @@
 
   <main>
     <section class="summary" aria-label="진행 요약">
-      <div class="metric"><b>7 / 10</b><span>완료 단계</span></div>
-      <div class="metric"><b>70%</b><span>단계 기준 진행률</span></div>
-      <div class="metric"><b>8.0 테스트</b><span>다음 단계</span></div>
-      <div class="metric"><b>2026-08-31</b><span>다음 단계 예정 시작일</span></div>
+      <div class="metric"><b>10 / 10</b><span>완료 단계</span></div>
+      <div class="metric"><b>100%</b><span>단계 기준 진행률</span></div>
+      <div class="metric"><b>프로젝트 종료</b><span>현재 상태</span></div>
+      <div class="metric"><b>2026-09-18</b><span>종료 기준일</span></div>
     </section>
 
     <div class="toolbar">
@@ -429,13 +429,13 @@
           <tr><td>M1 프로젝트 계획 확정</td><td>2026-06-26</td><td>계획서, WBS, 인력정의서 작성 완료</td><td><span class="badge complete">완료</span></td></tr>
           <tr><td>M2 아키텍처 확정</td><td>2026-07-03</td><td>시스템/GraphRAG 아키텍처 정의 완료</td><td><span class="badge complete">완료</span></td></tr>
           <tr><td>M3 요구사항 기준선 확정</td><td>2026-07-10</td><td>요구사항정의서 및 추적표 작성 완료</td><td><span class="badge complete">완료</span></td></tr>
-          <tr><td>M4 분석 완료</td><td>2026-07-17</td><td>기존 프로젝트 공통기능 분석 완료</td><td><span class="badge complete">다음 단계</span></td></tr>
-          <tr><td>M5 설계 기준선 확정</td><td>2026-07-31</td><td>상세설계, ERD, API 명세 완료</td><td><span class="badge complete">미착수</span></td></tr>
+          <tr><td>M4 분석 완료</td><td>2026-07-17</td><td>기존 프로젝트 공통기능 분석 완료</td><td><span class="badge complete">완료</span></td></tr>
+          <tr><td>M5 설계 기준선 확정</td><td>2026-07-31</td><td>상세설계, ERD, API 명세 완료</td><td><span class="badge complete">완료</span></td></tr>
           <tr><td>M6 공통 프레임워크 1차 구현 완료</td><td>2026-08-21</td><td>RAG, GraphRAG, Agent Core 구현 완료</td><td><span class="badge complete">완료</span></td></tr>
           <tr><td>M7 Sol-Bat 파일럿 완료</td><td>2026-08-28</td><td>파일럿 적용 결과 정리 완료</td><td><span class="badge complete">완료</span></td></tr>
-          <tr><td>M8 테스트 완료</td><td>2026-09-04</td><td>테스트결과서 및 결함 조치 완료</td><td><span class="badge next">다음 단계</span></td></tr>
-          <tr><td>M9 이행 준비 완료</td><td>2026-09-11</td><td>사용자/운영자 매뉴얼 작성 완료</td><td><span class="badge pending">미착수</span></td></tr>
-          <tr><td>M10 프로젝트 종료</td><td>2026-09-18</td><td>완료보고서 및 최종 산출물 정리 완료</td><td><span class="badge pending">미착수</span></td></tr>
+          <tr><td>M8 테스트 완료</td><td>2026-09-04</td><td>테스트결과서 및 결함 조치 완료</td><td><span class="badge complete">완료</span></td></tr>
+          <tr><td>M9 이행 준비 완료</td><td>2026-09-11</td><td>사용자/운영자 매뉴얼 작성 완료</td><td><span class="badge complete">완료</span></td></tr>
+          <tr><td>M10 프로젝트 종료</td><td>2026-09-18</td><td>완료보고서 및 최종 산출물 정리 완료</td><td><span class="badge complete">완료</span></td></tr>
         </tbody>
       </table>
     </section>
@@ -536,36 +536,36 @@
         ]
       },
       {
-        id: "8.0", name: "테스트", startWeek: 11, span: 1, status: "next",
+        id: "8.0", name: "테스트", startWeek: 11, span: 1, status: "complete",
         dates: "2026-08-31 ~ 2026-09-04",
         children: [
-          ["8.1", "테스트계획서 작성", 11, 1, "pending", ["테스트계획서", "범위 및 전략"]],
-          ["8.2", "테스트시나리오 작성", 11, 1, "pending", ["테스트시나리오", "관리자/검색/Agent 시나리오"]],
-          ["8.3", "단위 및 통합 테스트 수행", 11, 1, "pending", ["테스트결과서", "단위/통합 테스트 결과"]],
-          ["8.4", "GraphRAG 품질 평가", 11, 1, "pending", ["AI 품질 평가 결과", "검색/답변 품질 지표"]],
-          ["8.5", "결함 조치 및 테스트 결과 확정", 11, 1, "pending", ["결함 및 조치결과 보고서", "테스트 결과 확정"]]
+          ["8.1", "테스트계획서 작성", 11, 1, "complete", ["테스트계획서", "범위 및 전략"]],
+          ["8.2", "테스트시나리오 작성", 11, 1, "complete", ["테스트시나리오", "관리자/검색/Agent 시나리오"]],
+          ["8.3", "단위 및 통합 테스트 수행", 11, 1, "complete", ["테스트자동화구조 및 수행결과", "pytest 32개 통과"]],
+          ["8.4", "GraphRAG 품질 평가", 11, 1, "complete", ["결함관리대장 및 보완사항", "품질 게이트 정리"]],
+          ["8.5", "결함 조치 및 테스트 결과 확정", 11, 1, "complete", ["결함 및 조치결과 보고서", "테스트 결과 확정"]]
         ]
       },
       {
-        id: "9.0", name: "이행", startWeek: 12, span: 1, status: "pending",
+        id: "9.0", name: "이행", startWeek: 12, span: 1, status: "complete",
         dates: "2026-09-07 ~ 2026-09-11",
         children: [
-          ["9.1", "사용자매뉴얼 작성", 12, 1, "pending", ["사용자매뉴얼", "관리자 사이트 사용법"]],
-          ["9.2", "운영자매뉴얼 작성", 12, 1, "pending", ["운영자매뉴얼", "작업/장애 대응 절차"]],
-          ["9.3", "신규 서비스 적용 가이드 작성", 12, 1, "pending", ["적용가이드", "서비스 연동 절차"]],
-          ["9.4", "배포 및 운영 체크리스트 작성", 12, 1, "pending", ["이행점검 체크리스트", "운영 준비 점검"]],
-          ["9.5", "이행 준비상태 검토", 12, 1, "pending", ["이행 검토 결과", "이행 승인 기준"]]
+          ["9.1", "사용자매뉴얼 작성", 12, 1, "complete", ["사용자매뉴얼", "관리자 사이트 사용법"]],
+          ["9.2", "운영자매뉴얼 작성", 12, 1, "complete", ["운영자매뉴얼", "작업/장애 대응 절차"]],
+          ["9.3", "신규 서비스 적용 가이드 작성", 12, 1, "complete", ["적용가이드", "서비스 연동 절차"]],
+          ["9.4", "배포 및 운영 체크리스트 작성", 12, 1, "complete", ["이행점검 체크리스트", "운영 준비 점검"]],
+          ["9.5", "이행 준비상태 검토", 12, 1, "complete", ["이행 검토 결과", "이행 승인 기준"]]
         ]
       },
       {
-        id: "10.0", name: "종료", startWeek: 13, span: 1, status: "pending",
+        id: "10.0", name: "종료", startWeek: 13, span: 1, status: "complete",
         dates: "2026-09-14 ~ 2026-09-18",
         children: [
-          ["10.1", "최종 산출물 정리", 13, 1, "pending", ["최종 산출물 목록", "산출물 누락 점검"]],
-          ["10.2", "프로젝트 완료보고서 작성", 13, 1, "pending", ["프로젝트완료보고서", "목표 대비 결과"]],
-          ["10.3", "Lessons Learned 작성", 13, 1, "pending", ["Lessons Learned", "개선점 정리"]],
-          ["10.4", "릴리즈 태그 및 버전 정리", 13, 1, "pending", ["릴리즈 기록", "버전 및 태그"]],
-          ["10.5", "최종 종료 검토", 13, 1, "pending", ["종료 승인", "최종 종료 검토"]]
+          ["10.1", "최종 산출물 정리", 13, 1, "complete", ["최종 산출물 목록", "산출물 누락 점검"]],
+          ["10.2", "프로젝트 완료보고서 작성", 13, 1, "complete", ["프로젝트완료보고서", "목표 대비 결과"]],
+          ["10.3", "Lessons Learned 작성", 13, 1, "complete", ["Lessons Learned", "개선점 정리"]],
+          ["10.4", "릴리즈 태그 및 버전 정리", 13, 1, "complete", ["릴리즈 기록", "버전 및 태그"]],
+          ["10.5", "최종 종료 검토", 13, 1, "complete", ["종료 승인", "최종 종료 검토"]]
         ]
       }
     ];
